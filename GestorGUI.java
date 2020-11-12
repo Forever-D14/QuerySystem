@@ -58,25 +58,28 @@ public class GestorGUI extends javax.swing.JFrame {
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(null);
 
         textAreaQuery.setColumns(20);
         textAreaQuery.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         textAreaQuery.setRows(5);
         jScrollPane1.setViewportView(textAreaQuery);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 900, 150));
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(30, 100, 900, 150);
 
         labelQuery.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         labelQuery.setForeground(new java.awt.Color(255, 255, 255));
         labelQuery.setText("QUERY");
-        jPanel1.add(labelQuery, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+        jPanel1.add(labelQuery);
+        labelQuery.setBounds(30, 50, 130, 42);
 
         labelResult.setBackground(new java.awt.Color(204, 204, 255));
         labelResult.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         labelResult.setForeground(new java.awt.Color(255, 255, 255));
         labelResult.setText("RESULTADO DEL QUERY");
-        jPanel1.add(labelResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, 60));
+        jPanel1.add(labelResult);
+        labelResult.setBounds(30, 280, 445, 60);
 
         tableResultQuery.setAutoCreateRowSorter(true);
         tableResultQuery.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -92,11 +95,12 @@ public class GestorGUI extends javax.swing.JFrame {
         tableResultQuery.setDebugGraphicsOptions(javax.swing.DebugGraphics.BUFFERED_OPTION);
         jScrollPane2.setViewportView(tableResultQuery);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 350, 400, 241));
+        jPanel1.add(jScrollPane2);
+        jScrollPane2.setBounds(940, 350, 400, 241);
 
         buttonEjecutar.setBackground(new java.awt.Color(0, 153, 102));
         buttonEjecutar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        buttonEjecutar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/play(2).png"))); // NOI18N
+        buttonEjecutar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/play(2).png"))); // NOI18N
         buttonEjecutar.setBorder(null);
         buttonEjecutar.setBorderPainted(false);
         buttonEjecutar.setContentAreaFilled(false);
@@ -105,7 +109,8 @@ public class GestorGUI extends javax.swing.JFrame {
                 buttonEjecutarActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonEjecutar, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 130, 120, 100));
+        jPanel1.add(buttonEjecutar);
+        buttonEjecutar.setBounds(950, 130, 120, 100);
 
         tableResultQuery1.setAutoCreateRowSorter(true);
         tableResultQuery1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -121,7 +126,8 @@ public class GestorGUI extends javax.swing.JFrame {
         tableResultQuery1.setDebugGraphicsOptions(javax.swing.DebugGraphics.BUFFERED_OPTION);
         jScrollPane3.setViewportView(tableResultQuery1);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 430, 241));
+        jPanel1.add(jScrollPane3);
+        jScrollPane3.setBounds(30, 350, 430, 241);
 
         tableResultQuery2.setAutoCreateRowSorter(true);
         tableResultQuery2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -137,9 +143,10 @@ public class GestorGUI extends javax.swing.JFrame {
         tableResultQuery2.setDebugGraphicsOptions(javax.swing.DebugGraphics.BUFFERED_OPTION);
         jScrollPane4.setViewportView(tableResultQuery2);
 
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 350, 460, 241));
+        jPanel1.add(jScrollPane4);
+        jScrollPane4.setBounds(470, 350, 460, 241);
 
-        buttonClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clean.png"))); // NOI18N
+        buttonClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/clean.png"))); // NOI18N
         buttonClean.setBorderPainted(false);
         buttonClean.setContentAreaFilled(false);
         buttonClean.addActionListener(new java.awt.event.ActionListener() {
@@ -147,18 +154,19 @@ public class GestorGUI extends javax.swing.JFrame {
                 buttonCleanActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonClean, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 140, 90, 80));
+        jPanel1.add(buttonClean);
+        buttonClean.setBounds(1090, 140, 90, 80);
 
-        buttonExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/exit.png"))); // NOI18N
+        buttonExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/exit.png"))); // NOI18N
         buttonExit.setBorderPainted(false);
         buttonExit.setContentAreaFilled(false);
-        buttonExit.setLabel("");
         buttonExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonExitActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 140, -1, -1));
+        jPanel1.add(buttonExit);
+        buttonExit.setBounds(1220, 140, 97, 73);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -218,7 +226,7 @@ public class GestorGUI extends javax.swing.JFrame {
         BufferedReader auxb;
         
         
-                     auxf = new FileReader(nombre);
+                     auxf = new FileReader("tablas/" + nombre);
                      auxb = new BufferedReader(auxf);
                      
                      a=auxb.readLine().split(",");

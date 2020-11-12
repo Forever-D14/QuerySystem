@@ -34,7 +34,7 @@ public class Tabla {
         int j;
         for(int i=0;i<this.columnas.size();i++){
             instancia = "";
-            for(j = 0;j<this.columnas.get(i).tamaño;j++){
+            for(j = 0;j<this.columnas.get(i).tamano;j++){
                 instancia+=Character.toString(x[j+posicion]);
                 
             }
@@ -46,7 +46,7 @@ public class Tabla {
     public void describe(){
         for(int i=0;i<this.columnas.size();i++){
             System.out.print("COLUMNA " + i+ ": " + this.columnas.get(i).nombre + "\n"
-                    + "Tamaño: " + this.columnas.get(i).tamaño + "\n");   
+                    + "Tamaño: " + this.columnas.get(i).tamano + "\n");   
         }     
     }
     

@@ -13,12 +13,12 @@ import java.util.*;
  */
 class Columna {
     public String nombre;
-    public int tamaño;
+    public int tamano;
     public ArrayList<String> instancias = new ArrayList();
 
-    public Columna(String nombre, int tamaño) {
+    public Columna(String nombre, int tamano) {
         this.nombre = nombre;
-        this.tamaño = tamaño;
+        this.tamano = tamano;
     }
     
     
