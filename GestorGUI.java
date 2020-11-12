@@ -15,9 +15,9 @@ import javax.swing.table.*;
  * @author nacho
  */
 public class GestorGUI extends javax.swing.JFrame {
-        String a[];
-        String auxString;
-        Tabla auxTable;
+       public String a[];
+       public String auxString;
+       public  Tabla auxTable;
         /**
      * Creates new form GestorGUI
      */
@@ -111,10 +111,60 @@ public class GestorGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void queryLine(String[] lineas) throws FileNotFoundException, IOException{
-        String palabras[],nombreColumnas[]={},nombreArchivo;
+    public void printAllColumns(Tabla x){
+        for(int j = 0; j<x.columnas.size();j++){
+           GestorGUI.tablemodel.addColumn(x.columnas.get(j).nombre,x.columnas.get(j).instancias.toArray());
+        }
+        for(int j = 0; j<x.columnas.size();j++){
+            GestorGUI.tableResultQuery.getColumnModel().getColumn(j).setPreferredWidth(100);
+         }
+    }
+    
+    public void tableFill(String nombre) throws FileNotFoundException, IOException{
         FileReader auxf;
         BufferedReader auxb;
+        
+        
+                     auxf = new FileReader(nombre);
+                     auxb = new BufferedReader(auxf);
+                     
+                     a=auxb.readLine().split(",");
+        
+                     auxTable = new Tabla(a[0],a);
+                     auxString = auxb.readLine();
+                    do{
+                        auxTable.agreggate(auxString);
+                        }while((auxString=auxb.readLine()) != null);
+        
+    }
+    
+    public void equalsColumn(String x, String y,Tabla t){
+        int indexX=-1,indexY=-1;    
+        
+        for(int i=0;i<this.auxTable.columnas.size();i++){
+            if(this.auxTable.columnas.get(i).nombre.equals(x))
+                indexX=i;
+            if(this.auxTable.columnas.get(i).nombre.equals(y))
+                indexY=i;            
+            }
+        
+        if(indexY==-1){
+            int j=0;
+            for(int i=0;i<this.auxTable.columnas.get(0).instancias.size();i++){
+                if(!this.auxTable.columnas.get(indexX).instancias.get(i).trim().equals(y.trim())){
+                    t.removeFila(i);
+                    i--;
+                }
+            }        
+        
+        }
+            
+            
+    }
+    
+    public void queryLine(String[] lineas) throws FileNotFoundException, IOException{
+        String palabras[],nombreColumnas[]={},operaciones[],nombreArchivo;
+        Tabla temporal = new Tabla("Query");
         
         
         for(int i =0;i<lineas.length;i++){
@@ -129,28 +179,38 @@ public class GestorGUI extends javax.swing.JFrame {
                 
                 case "From":{
                     nombreArchivo = palabras[1] + ".txt";
-                     auxf = new FileReader(nombreArchivo);
-                     auxb = new BufferedReader(auxf);
-                     
-                     a=auxb.readLine().split(",");
-        
-                     auxTable = new Tabla(a[0],a);
-                     auxString = auxb.readLine();
-                    do{
-                        auxTable.agreggate(auxString);
-                        }while((auxString=auxb.readLine()) != null);
+                    tableFill(nombreArchivo);
                     
                     if(nombreColumnas[0].equals("*")){
-                        for(int j = 0; j<auxTable.columnas.size();j++){
-                             GestorGUI.tablemodel.addColumn(auxTable.columnas.get(j).nombre,auxTable.columnas.get(j).instancias.toArray());
-                        
-                         }
-                        for(int j = 0; j<auxTable.columnas.size();j++){
-                             GestorGUI.tableResultQuery.getColumnModel().getColumn(j).setPreferredWidth(150);
-                         }
+                         for(int k=0;k<auxTable.columnas.size();k++){
+                               temporal.columnas.add(auxTable.columnas.get(k));
+                               }
+                    }else{
+                        for (int j =0;j<nombreColumnas.length;j++){
+                            for(int k=0;k<auxTable.columnas.size();k++){
+                                if(nombreColumnas[j].equals(auxTable.columnas.get(k).nombre)){
+                                    temporal.columnas.add(auxTable.columnas.get(k));
+                                }
+                            }
+                        }
+                        if(temporal.columnas.size()<1)//OPTION PANE
+                            System.out.println("No hay ninguna columna llamada de esa manera");
                     }
                     break;
                 }
+                case "Where":{
+                    switch(palabras[2]){
+                        case "=":{
+                            equalsColumn(palabras[1],palabras[3],temporal);
+                            printAllColumns(temporal);
+                        break;
+                        }
+                    
+                    }
+                    
+                    break;
+                }
+                
                 case "Describe":{
                     
                 }

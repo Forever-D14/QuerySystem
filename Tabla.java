@@ -22,9 +22,8 @@ public class Tabla {
         for(int i = 1;i<d.length;i+=3){
             this.columnas.add(new Columna(d[i],(Integer.parseInt(d[i+2])-Integer.parseInt(d[i+1]))+1));
         }
-        
     }
-
+    
     public Tabla(String nombre) {
         this.nombre = nombre;
     }
@@ -47,12 +46,13 @@ public class Tabla {
     public void describe(){
         for(int i=0;i<this.columnas.size();i++){
             System.out.print("COLUMNA " + i+ ": " + this.columnas.get(i).nombre + "\n"
-                    + "Tamaño: " + this.columnas.get(i).tamaño + "\n");
-            
-        }
-            
+                    + "Tamaño: " + this.columnas.get(i).tamaño + "\n");   
+        }     
     }
     
-    
+    public void removeFila(int index){
+        for(int i = 0;i<this.columnas.size();i++)
+           this.columnas.get(i).instancias.remove(index);
+    }
     
 }

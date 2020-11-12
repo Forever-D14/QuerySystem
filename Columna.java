@@ -21,4 +21,5 @@ class Columna {
         this.tamaño = tamaño;
     }
     
+    
 }
