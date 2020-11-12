@@ -355,6 +355,7 @@ public class GestorGUI extends javax.swing.JFrame {
         
         String palabras[],nombreColumnas[]={},operaciones[],nombreArchivo;
         Tabla temporal = new Tabla("Query");
+        Tabla intermedia = null;
         
         
         for(int i =0;i<lineas.length;i++){
@@ -389,13 +390,16 @@ public class GestorGUI extends javax.swing.JFrame {
                         
                             
                     }
-                    printAllColumns(temporal,tablemodel2,tableResultQuery2);
+                    intermedia = auxTable;
                     break;
                 }
                 case "Where":{
+                    intermedia = auxTable;
                     switch(palabras[2]){
                         case "=":{
+                            equalsColumn(palabras[1],palabras[3],intermedia);
                             equalsColumn(palabras[1],palabras[3],temporal);
+                            
                         break;
                         }
                         case "<":{
@@ -429,6 +433,7 @@ public class GestorGUI extends javax.swing.JFrame {
         
             }
         }
+        printAllColumns(intermedia,tablemodel2,tableResultQuery2);
         printAllColumns(temporal,tablemodel,tableResultQuery);
         
     }
