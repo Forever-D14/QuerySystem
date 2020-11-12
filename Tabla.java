@@ -51,8 +51,8 @@ public class Tabla {
     }
     
     public void removeFila(int index){
-        for(int i = 0;i<this.columnas.size();i++)
-           this.columnas.get(i).instancias.remove(index);
+        for(int c = 0;c<this.columnas.size();c++)
+           this.columnas.get(c).instancias.remove(index);
     }
     
 }

@@ -44,6 +44,12 @@ public class GestorGUI extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tableResultQuery = new javax.swing.JTable();
         buttonEjecutar = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tableResultQuery1 = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tableResultQuery2 = new javax.swing.JTable();
+        buttonClean = new javax.swing.JButton();
+        buttonExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 51, 102));
@@ -51,25 +57,26 @@ public class GestorGUI extends javax.swing.JFrame {
         setName("GESTOR BD"); // NOI18N
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         textAreaQuery.setColumns(20);
+        textAreaQuery.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         textAreaQuery.setRows(5);
         jScrollPane1.setViewportView(textAreaQuery);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 58, 840, 150));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 900, 150));
 
-        labelQuery.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        labelQuery.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        labelQuery.setForeground(new java.awt.Color(255, 255, 255));
         labelQuery.setText("QUERY");
-        jPanel1.add(labelQuery, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 28, -1, -1));
+        jPanel1.add(labelQuery, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
         labelResult.setBackground(new java.awt.Color(204, 204, 255));
-        labelResult.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        labelResult.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        labelResult.setForeground(new java.awt.Color(255, 255, 255));
         labelResult.setText("RESULTADO DEL QUERY");
-        jPanel1.add(labelResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, -1, -1));
-
-        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jPanel1.add(labelResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, 60));
 
         tableResultQuery.setAutoCreateRowSorter(true);
         tableResultQuery.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -85,38 +92,124 @@ public class GestorGUI extends javax.swing.JFrame {
         tableResultQuery.setDebugGraphicsOptions(javax.swing.DebugGraphics.BUFFERED_OPTION);
         jScrollPane2.setViewportView(tableResultQuery);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 645, 241));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 350, 400, 241));
 
         buttonEjecutar.setBackground(new java.awt.Color(0, 153, 102));
         buttonEjecutar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        buttonEjecutar.setText("Ejecutar ");
+        buttonEjecutar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/play(2).png"))); // NOI18N
+        buttonEjecutar.setBorder(null);
+        buttonEjecutar.setBorderPainted(false);
+        buttonEjecutar.setContentAreaFilled(false);
         buttonEjecutar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonEjecutarActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonEjecutar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 125, 51));
+        jPanel1.add(buttonEjecutar, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 130, 120, 100));
+
+        tableResultQuery1.setAutoCreateRowSorter(true);
+        tableResultQuery1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tableResultQuery1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tableResultQuery1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tableResultQuery1.setDebugGraphicsOptions(javax.swing.DebugGraphics.BUFFERED_OPTION);
+        jScrollPane3.setViewportView(tableResultQuery1);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 430, 241));
+
+        tableResultQuery2.setAutoCreateRowSorter(true);
+        tableResultQuery2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tableResultQuery2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tableResultQuery2.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tableResultQuery2.setDebugGraphicsOptions(javax.swing.DebugGraphics.BUFFERED_OPTION);
+        jScrollPane4.setViewportView(tableResultQuery2);
+
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 350, 460, 241));
+
+        buttonClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clean.png"))); // NOI18N
+        buttonClean.setBorderPainted(false);
+        buttonClean.setContentAreaFilled(false);
+        buttonClean.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCleanActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttonClean, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 140, 90, 80));
+
+        buttonExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/exit.png"))); // NOI18N
+        buttonExit.setBorderPainted(false);
+        buttonExit.setContentAreaFilled(false);
+        buttonExit.setLabel("");
+        buttonExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonExitActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 140, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 931, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1353, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void printAllColumns(Tabla x){
+    private void buttonCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCleanActionPerformed
+
+        clean();
+        this.textAreaQuery.setText("");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonCleanActionPerformed
+
+    private void buttonEjecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEjecutarActionPerformed
+
+        String query = this.textAreaQuery.getText();
+        String lineas[],palabras[],nombreColumnas[];
+        clean();
+        lineas=query.split("\n");
+
+        try {
+            queryLine(lineas);
+
+        } catch (IOException ex) {
+            Logger.getLogger(GestorGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_buttonEjecutarActionPerformed
+
+    private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
+        System.exit(0);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonExitActionPerformed
+
+    public void printAllColumns(Tabla x,DefaultTableModel tm,JTable t){
         for(int j = 0; j<x.columnas.size();j++){
-           GestorGUI.tablemodel.addColumn(x.columnas.get(j).nombre,x.columnas.get(j).instancias.toArray());
+           tm.addColumn(x.columnas.get(j).nombre,x.columnas.get(j).instancias.toArray());
         }
         for(int j = 0; j<x.columnas.size();j++){
-            GestorGUI.tableResultQuery.getColumnModel().getColumn(j).setPreferredWidth(100);
+                t.getColumnModel().getColumn(j).setPreferredWidth(100);
          }
     }
     
@@ -150,19 +243,108 @@ public class GestorGUI extends javax.swing.JFrame {
         
         if(indexY==-1){
             int j=0;
-            for(int i=0;i<this.auxTable.columnas.get(0).instancias.size();i++){
+            for(int i=0;i<t.columnas.get(0).instancias.size();i++){
                 if(!this.auxTable.columnas.get(indexX).instancias.get(i).trim().equals(y.trim())){
-                    t.removeFila(i);
-                    i--;
+                    t.removeFila(i);i--;             
+                }
+            }        
+        }else{
+            for(int i=0;i<t.columnas.get(0).instancias.size();i++){
+                if(!this.auxTable.columnas.get(indexX).instancias.get(i).trim().equals(this.auxTable.columnas.get(indexY).instancias.get(i).trim())){
+                    t.removeFila(i);i--;             
+                }
+            }   
+        } 
+           
+    }
+    
+    public void menorColumn(String x, String y,Tabla t){
+        int indexX=-1,indexY=-1;    
+        
+        for(int i=0;i<this.auxTable.columnas.size();i++){
+            if(this.auxTable.columnas.get(i).nombre.equals(x))
+                indexX=i;
+            if(this.auxTable.columnas.get(i).nombre.equals(y))
+                indexY=i;            
+            }
+        
+        if(indexY==-1){
+            int j=0;
+            for(int i=0;i<t.columnas.get(0).instancias.size();i++){
+                if(!(Integer.parseInt(this.auxTable.columnas.get(indexX).instancias.get(i).trim())<(Integer.parseInt(y.trim())))){
+                    t.removeFila(i);i--;             
                 }
             }        
         
-        }
-            
-            
+        }         
+    }
+     
+    public void mayorColumn(String x, String y,Tabla t){
+        int indexX=-1,indexY=-1;    
+        
+        for(int i=0;i<this.auxTable.columnas.size();i++){
+            if(this.auxTable.columnas.get(i).nombre.equals(x))
+                indexX=i;
+            if(this.auxTable.columnas.get(i).nombre.equals(y))
+                indexY=i;            
+            }
+        
+        if(indexY==-1){
+            int j=0;
+            for(int i=0;i<t.columnas.get(0).instancias.size();i++){
+                if(!(Integer.parseInt(this.auxTable.columnas.get(indexX).instancias.get(i).trim())>(Integer.parseInt(y.trim())))){
+                    t.removeFila(i);i--;             
+                }
+            }        
+        
+        }         
     }
     
+    public void mayorEqualColumn(String x, String y,Tabla t){
+        int indexX=-1,indexY=-1;    
+        
+        for(int i=0;i<this.auxTable.columnas.size();i++){
+            if(this.auxTable.columnas.get(i).nombre.equals(x))
+                indexX=i;
+            if(this.auxTable.columnas.get(i).nombre.equals(y))
+                indexY=i;            
+            }
+        
+        if(indexY==-1){
+            int j=0;
+            for(int i=0;i<t.columnas.get(0).instancias.size();i++){
+                if(!(Integer.parseInt(this.auxTable.columnas.get(indexX).instancias.get(i).trim())>=(Integer.parseInt(y.trim())))){
+                    t.removeFila(i);i--;             
+                }
+            }        
+        
+        }         
+    }
+    
+    public void menorEqualColumn(String x, String y,Tabla t){
+        int indexX=-1,indexY=-1;    
+        
+        for(int i=0;i<this.auxTable.columnas.size();i++){
+            if(this.auxTable.columnas.get(i).nombre.equals(x))
+                indexX=i;
+            if(this.auxTable.columnas.get(i).nombre.equals(y))
+                indexY=i;            
+            }
+        
+        if(indexY==-1){
+            int j=0;
+            for(int i=0;i<t.columnas.get(0).instancias.size();i++){
+                if(!(Integer.parseInt(this.auxTable.columnas.get(indexX).instancias.get(i).trim())<=(Integer.parseInt(y.trim())))){
+                    t.removeFila(i);i--;             
+                }
+            }        
+        
+        }         
+    }
+    
+    
     public void queryLine(String[] lineas) throws FileNotFoundException, IOException{
+        
         String palabras[],nombreColumnas[]={},operaciones[],nombreArchivo;
         Tabla temporal = new Tabla("Query");
         
@@ -173,7 +355,7 @@ public class GestorGUI extends javax.swing.JFrame {
             switch(palabras[0]){
                 
                 case "Select":{
-                    nombreColumnas = palabras[1].split(", ");                    
+                    nombreColumnas = palabras[1].split(",");                    
                     break;
                 }
                 
@@ -181,12 +363,13 @@ public class GestorGUI extends javax.swing.JFrame {
                     nombreArchivo = palabras[1] + ".txt";
                     tableFill(nombreArchivo);
                     
+                    printAllColumns(auxTable,tablemodel1,tableResultQuery1);
                     if(nombreColumnas[0].equals("*")){
                          for(int k=0;k<auxTable.columnas.size();k++){
                                temporal.columnas.add(auxTable.columnas.get(k));
                                }
                     }else{
-                        for (int j =0;j<nombreColumnas.length;j++){
+                        for(int j =0;j<nombreColumnas.length;j++){
                             for(int k=0;k<auxTable.columnas.size();k++){
                                 if(nombreColumnas[j].equals(auxTable.columnas.get(k).nombre)){
                                     temporal.columnas.add(auxTable.columnas.get(k));
@@ -195,17 +378,37 @@ public class GestorGUI extends javax.swing.JFrame {
                         }
                         if(temporal.columnas.size()<1)//OPTION PANE
                             System.out.println("No hay ninguna columna llamada de esa manera");
+                        
+                            
                     }
+                    printAllColumns(temporal,tablemodel2,tableResultQuery2);
                     break;
                 }
                 case "Where":{
                     switch(palabras[2]){
                         case "=":{
                             equalsColumn(palabras[1],palabras[3],temporal);
-                            printAllColumns(temporal);
                         break;
                         }
-                    
+                        case "<":{
+                            menorColumn(palabras[1],palabras[3],temporal);
+                        break;
+                        }
+                        case ">":{
+                            mayorColumn(palabras[1],palabras[3],temporal);
+                            break;
+                        }
+                        case "<=":{
+                            menorEqualColumn(palabras[1],palabras[3],temporal);
+                            break;
+                        }
+                        case ">=":{
+                            mayorEqualColumn(palabras[1],palabras[3],temporal);
+                            break;
+                        }
+                        default:{
+                            System.out.println("Operador no funcional");
+                        }
                     }
                     
                     break;
@@ -218,57 +421,28 @@ public class GestorGUI extends javax.swing.JFrame {
         
             }
         }
+        printAllColumns(temporal,tablemodel,tableResultQuery);
+        
+    }
+    
+    public void clean(){
+        this.tableResultQuery.setModel(tablemodel = new javax.swing.table.DefaultTableModel(
+                                                                    new Object [][] {},new String [] {}));
+        this.tableResultQuery1.setModel(tablemodel1 = new javax.swing.table.DefaultTableModel(
+                                                                    new Object [][] {},new String [] {}));
+        this.tableResultQuery2.setModel(tablemodel2 = new javax.swing.table.DefaultTableModel(
+                                                                    new Object [][] {},new String [] {}));
     }
     
     
-    private void buttonEjecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEjecutarActionPerformed
-       
-        String query = this.textAreaQuery.getText();
-        String lineas[],palabras[],nombreColumnas[];
-        
-        lineas=query.split("\n");
-        
-            try {
-                queryLine(lineas);
-                
-                /* try {
-                auxf = new FileReader(query);
-                auxb = new BufferedReader(auxf);
-                
-                a=auxb.readLine().split(",");
-                
-                auxTable = new Tabla(a[0],a);
-                auxString = auxb.readLine();
-                do{
-                auxTable.agreggate(auxString);
-                }while((auxString=auxb.readLine()) != null);
-                
-                } catch (FileNotFoundException ex) {
-                Logger.getLogger(GestorGUI.class.getName()).log(Level.SEVERE, null, ex);
-                }   catch (IOException ex) {
-                Logger.getLogger(GestorGUI.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                
-                
-                for(int i = 0; i<auxTable.columnas.size();i++){
-                GestorGUI.tablemodel.addColumn(auxTable.columnas.get(i).nombre,auxTable.columnas.get(i).instancias.toArray());
-                GestorGUI.tableResultQuery.getColumnModel().getColumn(i).setPreferredWidth(200);
-                }
-                
-                for(int i = 0; i<auxTable.columnas.size();i++){
-                GestorGUI.tableResultQuery.getColumnModel().getColumn(i).setPreferredWidth(150);
-                
-                }*/
-                // TODO add your handling code here:
-            } catch (IOException ex) {
-                Logger.getLogger(GestorGUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
-    }//GEN-LAST:event_buttonEjecutarActionPerformed
-
+    
+    
     /**
      * @param args the command line arguments
      */
     public static DefaultTableModel tablemodel;
+    public static DefaultTableModel tablemodel1;
+    public static DefaultTableModel tablemodel2;
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -299,6 +473,12 @@ public class GestorGUI extends javax.swing.JFrame {
                 new GestorGUI().setVisible(true);
                 GestorGUI.tableResultQuery.setModel(tablemodel = new javax.swing.table.DefaultTableModel(
                                                                     new Object [][] {},new String [] {}));
+                
+                GestorGUI.tableResultQuery1.setModel(tablemodel1 = new javax.swing.table.DefaultTableModel(
+                                                                    new Object [][] {},new String [] {}));
+                
+                GestorGUI.tableResultQuery2.setModel(tablemodel2 = new javax.swing.table.DefaultTableModel(
+                                                                    new Object [][] {},new String [] {}));
             }
         });
     }
@@ -308,13 +488,19 @@ public class GestorGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonClean;
     private javax.swing.JButton buttonEjecutar;
+    private javax.swing.JButton buttonExit;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel labelQuery;
     private javax.swing.JLabel labelResult;
     public static javax.swing.JTable tableResultQuery;
+    public static javax.swing.JTable tableResultQuery1;
+    public static javax.swing.JTable tableResultQuery2;
     private javax.swing.JTextArea textAreaQuery;
     // End of variables declaration//GEN-END:variables
 }
