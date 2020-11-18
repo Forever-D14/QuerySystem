@@ -7,7 +7,7 @@ Employees,employees_id,1,6,first_name,7,26,last_name,27,51,email,52,76,phone_num
    105 	             David     	             Austin    	             DAUSTIN   	    590.423.4569 250697	  IT_PROG    4800      103  60
    106 	             Valli                Pataballa    	            VPATABAL   	    590.423.4560 050298	  IT_PROG    4800      103  60
    107 	             Diana     	            Lorentz    	            DLORENTZ   	    590.423.5567 070299	  IT_PROG    4200      103  60
-   108                Alma     	          Greenberg    	            NGREENBE   	    515.124.4569 170894	   FI_MGR   12000      101 100
+   108               Nancy     	          Greenberg    	            NGREENBE   	    515.124.4569 170894	   FI_MGR   12000      101 100
    109 	            Daniel     	             Faviet    	             DFAVIET   	    515.124.4169 160894FI_ACCOUNT    9000      108 100
    110                John     	               Chen    	               JCHEN   	    515.124.4269 280997FI_ACCOUNT    8200      108 100
    111              Ismael     	            Sciarra    	            ISCIARRA   	    515.124.4369 300997FI_ACCOUNT    7700      108 100

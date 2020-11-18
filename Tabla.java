@@ -38,6 +38,7 @@ public class Tabla {
                 instancia+=Character.toString(x[j+posicion]);
                 
             }
+            instancia = instancia.trim();
             posicion+=j;
             this.columnas.get(i).instancias.add(instancia);
         }
