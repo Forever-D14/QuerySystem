@@ -1,5 +1,6 @@
 
 import java.io.*;
+import java.util.*;
 import java.util.logging.*;
 import javax.swing.*;
 import javax.swing.table.*;
@@ -17,7 +18,8 @@ import javax.swing.table.*;
 public class GestorGUI extends javax.swing.JFrame {
        public String a[];
        public String auxString;
-       public  Tabla auxTable;
+       public  Tabla auxTable,auxTable2;
+       public String nombreTabla1,nombreTabla2;
         /**
      * Creates new form GestorGUI
      */
@@ -41,13 +43,24 @@ public class GestorGUI extends javax.swing.JFrame {
         textAreaQuery = new javax.swing.JTextArea();
         labelQuery = new javax.swing.JLabel();
         labelResult = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tableResultQuery = new javax.swing.JTable();
         buttonEjecutar = new javax.swing.JButton();
+        tableScroll = new javax.swing.JScrollPane();
+        tablesPanel = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tableResultQuery1 = new javax.swing.JTable();
-        jScrollPane4 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
         tableResultQuery2 = new javax.swing.JTable();
+        labelFinal = new javax.swing.JLabel();
+        labelTabla1 = new javax.swing.JLabel();
+        labelFiltrado2 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tableResultQuery4 = new javax.swing.JTable();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tableResultQuery5 = new javax.swing.JTable();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        tableResultQuery3 = new javax.swing.JTable();
+        labelTabla2 = new javax.swing.JLabel();
+        labelFiltrado = new javax.swing.JLabel();
         buttonClean = new javax.swing.JButton();
         buttonExit = new javax.swing.JButton();
 
@@ -58,45 +71,20 @@ public class GestorGUI extends javax.swing.JFrame {
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
-        jPanel1.setLayout(null);
 
         textAreaQuery.setColumns(20);
         textAreaQuery.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         textAreaQuery.setRows(5);
         jScrollPane1.setViewportView(textAreaQuery);
 
-        jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(30, 100, 900, 150);
-
         labelQuery.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         labelQuery.setForeground(new java.awt.Color(255, 255, 255));
         labelQuery.setText("QUERY");
-        jPanel1.add(labelQuery);
-        labelQuery.setBounds(30, 50, 130, 42);
 
         labelResult.setBackground(new java.awt.Color(204, 204, 255));
         labelResult.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         labelResult.setForeground(new java.awt.Color(255, 255, 255));
         labelResult.setText("RESULTADO DEL QUERY");
-        jPanel1.add(labelResult);
-        labelResult.setBounds(30, 280, 445, 60);
-
-        tableResultQuery.setAutoCreateRowSorter(true);
-        tableResultQuery.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        tableResultQuery.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        tableResultQuery.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        tableResultQuery.setDebugGraphicsOptions(javax.swing.DebugGraphics.BUFFERED_OPTION);
-        jScrollPane2.setViewportView(tableResultQuery);
-
-        jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(940, 350, 400, 241);
 
         buttonEjecutar.setBackground(new java.awt.Color(0, 153, 102));
         buttonEjecutar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -109,8 +97,11 @@ public class GestorGUI extends javax.swing.JFrame {
                 buttonEjecutarActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonEjecutar);
-        buttonEjecutar.setBounds(950, 130, 120, 100);
+
+        tableScroll.setAutoscrolls(true);
+
+        tablesPanel.setBackground(new java.awt.Color(102, 138, 200));
+        tablesPanel.setAutoscrolls(true);
 
         tableResultQuery1.setAutoCreateRowSorter(true);
         tableResultQuery1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -126,9 +117,6 @@ public class GestorGUI extends javax.swing.JFrame {
         tableResultQuery1.setDebugGraphicsOptions(javax.swing.DebugGraphics.BUFFERED_OPTION);
         jScrollPane3.setViewportView(tableResultQuery1);
 
-        jPanel1.add(jScrollPane3);
-        jScrollPane3.setBounds(30, 350, 430, 241);
-
         tableResultQuery2.setAutoCreateRowSorter(true);
         tableResultQuery2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         tableResultQuery2.setModel(new javax.swing.table.DefaultTableModel(
@@ -141,10 +129,123 @@ public class GestorGUI extends javax.swing.JFrame {
         ));
         tableResultQuery2.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tableResultQuery2.setDebugGraphicsOptions(javax.swing.DebugGraphics.BUFFERED_OPTION);
-        jScrollPane4.setViewportView(tableResultQuery2);
+        jScrollPane2.setViewportView(tableResultQuery2);
 
-        jPanel1.add(jScrollPane4);
-        jScrollPane4.setBounds(470, 350, 460, 241);
+        labelFinal.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        labelFinal.setForeground(new java.awt.Color(255, 255, 255));
+        labelFinal.setText("PROYECCION");
+
+        labelTabla1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        labelTabla1.setForeground(new java.awt.Color(255, 255, 255));
+        labelTabla1.setText("TABLA");
+
+        labelFiltrado2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        labelFiltrado2.setForeground(new java.awt.Color(255, 255, 255));
+        labelFiltrado2.setText("PRODUCTO CARTESIANO");
+
+        tableResultQuery4.setAutoCreateRowSorter(true);
+        tableResultQuery4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tableResultQuery4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tableResultQuery4.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tableResultQuery4.setDebugGraphicsOptions(javax.swing.DebugGraphics.BUFFERED_OPTION);
+        jScrollPane5.setViewportView(tableResultQuery4);
+
+        tableResultQuery5.setAutoCreateRowSorter(true);
+        tableResultQuery5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tableResultQuery5.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tableResultQuery5.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tableResultQuery5.setDebugGraphicsOptions(javax.swing.DebugGraphics.BUFFERED_OPTION);
+        jScrollPane6.setViewportView(tableResultQuery5);
+
+        tableResultQuery3.setAutoCreateRowSorter(true);
+        tableResultQuery3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tableResultQuery3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tableResultQuery3.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tableResultQuery3.setDebugGraphicsOptions(javax.swing.DebugGraphics.BUFFERED_OPTION);
+        jScrollPane7.setViewportView(tableResultQuery3);
+
+        labelTabla2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        labelTabla2.setForeground(new java.awt.Color(255, 255, 255));
+        labelTabla2.setText("TABLA");
+
+        labelFiltrado.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        labelFiltrado.setForeground(new java.awt.Color(255, 255, 255));
+        labelFiltrado.setText("FILTRADO");
+
+        javax.swing.GroupLayout tablesPanelLayout = new javax.swing.GroupLayout(tablesPanel);
+        tablesPanel.setLayout(tablesPanelLayout);
+        tablesPanelLayout.setHorizontalGroup(
+            tablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tablesPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(tablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tablesPanelLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addGroup(tablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(tablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelTabla2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(labelTabla1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(tablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelFiltrado, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelFiltrado2))
+                .addGap(6, 6, 6)
+                .addGroup(tablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+        tablesPanelLayout.setVerticalGroup(
+            tablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tablesPanelLayout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addGroup(tablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelTabla1)
+                    .addGroup(tablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelFinal)
+                        .addComponent(labelFiltrado)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGroup(tablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTabla2)
+                    .addComponent(labelFiltrado2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(tablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30))
+        );
+
+        tableScroll.setViewportView(tablesPanel);
 
         buttonClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/clean.png"))); // NOI18N
         buttonClean.setBorderPainted(false);
@@ -154,8 +255,6 @@ public class GestorGUI extends javax.swing.JFrame {
                 buttonCleanActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonClean);
-        buttonClean.setBounds(1090, 140, 90, 80);
 
         buttonExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/exit.png"))); // NOI18N
         buttonExit.setBorderPainted(false);
@@ -165,21 +264,76 @@ public class GestorGUI extends javax.swing.JFrame {
                 buttonExitActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonExit);
-        buttonExit.setBounds(1220, 140, 97, 73);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(labelQuery))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(1090, 1090, 1090)
+                                .addComponent(buttonClean, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(950, 950, 950)
+                                .addComponent(buttonEjecutar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(1220, 1220, 1220)
+                                .addComponent(buttonExit))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(labelResult))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(tableScroll, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(labelQuery)
+                .addGap(8, 8, 8)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(buttonClean, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(buttonEjecutar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(buttonExit))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(140, 140, 140)
+                        .addComponent(labelResult, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tableScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1353, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -221,27 +375,76 @@ public class GestorGUI extends javax.swing.JFrame {
          }
     }
     
-    public void tableFill(String nombre) throws FileNotFoundException, IOException{
+    public Tabla tableFill(String nombre) throws FileNotFoundException, IOException{
         FileReader auxf;
         BufferedReader auxb;
-        
+        String auxString;
+        Tabla X;
         
                      auxf = new FileReader("tablas/" + nombre);
                      auxb = new BufferedReader(auxf);
                      
                      a=auxb.readLine().split(",");
         
-                     auxTable = new Tabla(a[0],a);
+                     X = new Tabla(a[0],a);
                      auxString = auxb.readLine();
+                     
                     do{
-                        auxTable.agreggate(auxString);
+                        X.agreggate(auxString);
                         }while((auxString=auxb.readLine()) != null);
+        return X;
         
     }
     
     public void equalsColumn(String x, String y,Tabla t){
         int indexX=-1,indexY=-1;    
+        String tabla1,tabla2;
+        String Columna1,Columna2;
+        if(x.split("\\.").length == 2){
+            tabla1 = x.split("\\.")[0].substring(0,1).toUpperCase() + x.split("\\.")[0].substring(1).toLowerCase() ;
+            Columna1 = x.split("\\.")[1];
+            try{
+                tabla2 = y.split("\\.")[0].substring(0,1).toUpperCase() + y.split("\\.")[0].substring(1).toLowerCase() ;
+                Columna2 = y.split("\\.")[1];
+            }catch(Exception e){
+                tabla2 = "";
+                Columna2 = y;
+            }
+            if(tabla2.equals("")){
+                for(int i=0;i<this.auxTable.columnas.size();i++){
+                    if(this.auxTable.columnas.get(i).nombre.equals(Columna1) && tabla1.equals(nombreTabla1) 
+                            && i<(auxTable.columnas.size()-auxTable2.columnas.size()))
+                        indexX=i;
+                    if(this.auxTable.columnas.get(i).nombre.equals(Columna1) && tabla1.equals(auxTable2.nombre) 
+                            && i>=(auxTable.columnas.size()-auxTable2.columnas.size()))
+                        indexX=i;
+                    }
+                     int j=0;
+                     for(int i=0;i<t.columnas.get(0).instancias.size();i++){
+                        if(!this.auxTable.columnas.get(indexX).instancias.get(i).trim().equals(Columna2.trim())){
+                            t.removeFila(i);i--;   
+                         }
+                       }        
+            }else{
+                for(int i=0;i<this.auxTable.columnas.size();i++){
+                    if(this.auxTable.columnas.get(i).nombre.equals(Columna1) && tabla1.equals(nombreTabla1) 
+                            && i<(auxTable.columnas.size()-auxTable2.columnas.size()))
+                        indexX=i;
+                    if(this.auxTable.columnas.get(i).nombre.equals(Columna1) && tabla2.equals(auxTable2.nombre) 
+                            && i>=(auxTable.columnas.size()-auxTable2.columnas.size()))
+                        indexY=i;
+                }
+                for(int i=0;i<t.columnas.get(0).instancias.size();i++){
+                    if(!this.auxTable.columnas.get(indexX).instancias.get(i).trim().equals(this.auxTable.columnas.get(indexY).instancias.get(i).trim())){
+                        t.removeFila(i);i--;             
+                    }
+                }  
+                
+            
+            }
+            
         
+        }else{
         for(int i=0;i<this.auxTable.columnas.size();i++){
             if(this.auxTable.columnas.get(i).nombre.equals(x))
                 indexX=i;
@@ -263,7 +466,7 @@ public class GestorGUI extends javax.swing.JFrame {
                 }
             }   
         } 
-           
+      }   
     }
     
     public void menorColumn(String x, String y,Tabla t){
@@ -352,11 +555,14 @@ public class GestorGUI extends javax.swing.JFrame {
     
     
     public void queryLine(String[] lineas) throws FileNotFoundException, IOException{
-        
-        String palabras[],nombreColumnas[]={},operaciones[],nombreArchivo;
+        ArrayList <String> nombreTablas = new ArrayList();
+        String palabras[],nombreColumnas[]={},nombreArchivo;
         Tabla temporal = new Tabla("Query");
-        Tabla intermedia = null;
-        
+        Tabla intermedia = new Tabla("Tabla dos");
+        Tabla producto = new Tabla("Producto Cartesiano");
+        Tabla Filtrada = new Tabla("Filtrada");
+        String tabla;
+        int band=0;
         
         for(int i =0;i<lineas.length;i++){
             palabras=lineas[i].split(" ");
@@ -364,42 +570,103 @@ public class GestorGUI extends javax.swing.JFrame {
             switch(palabras[0]){
                 
                 case "Select":{
-                    nombreColumnas = palabras[1].split(",");                    
+                    nombreColumnas = palabras[1].split(","); 
+                    if(nombreColumnas[0].split("\\.").length > 1)
+                        for(int k = 0; k<nombreColumnas.length;k++){
+                            tabla = nombreColumnas[k].split("\\.")[0];
+                            nombreTablas.add(tabla.substring(0,1).toUpperCase() + tabla.substring(1).toLowerCase());
+                            nombreColumnas[k]=nombreColumnas[k].split("\\.")[1];
+                        }
                     break;
                 }
                 
                 case "From":{
-                    nombreArchivo = palabras[1] + ".txt";
-                    tableFill(nombreArchivo);
                     
-                    printAllColumns(auxTable,tablemodel1,tableResultQuery1);
-                    if(nombreColumnas[0].equals("*")){
-                         for(int k=0;k<auxTable.columnas.size();k++){
-                               temporal.columnas.add(auxTable.columnas.get(k));
-                               }
-                    }else{
-                        for(int j =0;j<nombreColumnas.length;j++){
-                            for(int k=0;k<auxTable.columnas.size();k++){
-                                if(nombreColumnas[j].equals(auxTable.columnas.get(k).nombre)){
-                                    temporal.columnas.add(auxTable.columnas.get(k));
+                    if(palabras.length==2){
+                        band=0;
+                        nombreArchivo = palabras[1] + ".txt";
+                        auxTable = tableFill(nombreArchivo);
+
+                        printAllColumns(auxTable,tablemodel1,tableResultQuery1);
+                        if(nombreColumnas[0].equals("*")){
+                             for(int k=0;k<auxTable.columnas.size();k++){
+                                   temporal.columnas.add(auxTable.columnas.get(k));
+                                   }
+                        }else{
+                            for(int j =0;j<nombreColumnas.length;j++){
+                                for(int k=0;k<auxTable.columnas.size();k++){
+                                    if(nombreColumnas[j].equals(auxTable.columnas.get(k).nombre)){
+                                        temporal.columnas.add(auxTable.columnas.get(k));
+                                    }
                                 }
                             }
+                            if(temporal.columnas.size()<1)//OPTION PANE
+                                System.out.println("No hay ninguna columna llamada de esa manera");
+
+
                         }
-                        if(temporal.columnas.size()<1)//OPTION PANE
-                            System.out.println("No hay ninguna columna llamada de esa manera");
+                        intermedia = auxTable;
                         
+                        }else{
+                            band = 1;
+                            nombreArchivo = palabras[1].replace(",", "") + ".txt";
+                            auxTable = tableFill(nombreArchivo);
+                            printAllColumns(auxTable,tablemodel1,tableResultQuery1);                      
                             
-                    }
-                    intermedia = auxTable;
+                            nombreArchivo = palabras[2] + ".txt";
+                            auxTable2 = tableFill(nombreArchivo);
+                            printAllColumns(auxTable2,tablemodel4,tableResultQuery4);
+                            
+                            for(Columna c : auxTable.columnas){producto.columnas.add(new Columna(c.nombre));}
+                            for(Columna c1 : auxTable2.columnas){producto.columnas.add(new Columna(c1.nombre));}
+                            //PROYECCION
+                            int z;
+                            
+                            
+                            //LLENADO DE PROYECCION CON TABLA 1
+                            for( z=0 ;z<auxTable.columnas.size();z++){
+                                for(String instx : auxTable.columnas.get(z).instancias){ 
+                                    for(String insty : auxTable2.columnas.get(0).instancias)
+                                        producto.columnas.get(z).instancias.add(instx);
+                                }
+                            }
+                            //LLENADO DE PROYECCION CON TABLA 2
+                            for(;z<producto.columnas.size();z++)
+                                for(String instx : auxTable.columnas.get(0).instancias)
+                                    producto.columnas.get(z).instancias.addAll(auxTable2.columnas.get(z-auxTable.columnas.size()).instancias);
+                            
+                            if (nombreColumnas[0].equals("*"))
+                                Filtrada = producto;
+                            else//FILTRADO DE COLUMNAS
+                                for(int w = 0; w < nombreColumnas.length; w++ )
+                                    for(Columna c : producto.columnas){ 
+                                        if(nombreTablas.get(w).equals(auxTable.nombre) && nombreColumnas[w].equals(c.nombre) 
+                                           && producto.columnas.indexOf(c)<auxTable.columnas.size())
+                                            Filtrada.columnas.add(c);
+                                        else if(nombreTablas.get(w).equals(auxTable2.nombre) && nombreColumnas[w].equals(c.nombre) 
+                                                && producto.columnas.indexOf(c)>=auxTable.columnas.size())
+                                                Filtrada.columnas.add(c);
+                                }
+                             printAllColumns(producto,tablemodel5,tableResultQuery5);
+                        }
+                   
                     break;
-                }
+                    }
                 case "Where":{
                     intermedia = auxTable;
+                    
                     switch(palabras[2]){
                         case "=":{
-                            equalsColumn(palabras[1],palabras[3],intermedia);
-                            equalsColumn(palabras[1],palabras[3],temporal);
+                            if(band==1){
+                            nombreTabla1 = auxTable.nombre;
+                            auxTable = producto;
+                            equalsColumn(palabras[1],palabras[3],producto);
                             
+                            }else if(band==0){
+                                equalsColumn(palabras[1],palabras[3],intermedia);
+                                equalsColumn(palabras[1],palabras[3],temporal);
+                                
+                            }
                         break;
                         }
                         case "<":{
@@ -433,18 +700,34 @@ public class GestorGUI extends javax.swing.JFrame {
         
             }
         }
+        
+         //RESOLVER POSICIONES DE TABLAS DEPENDIENDO DE LOS CASOS
+        if(band==0){
         printAllColumns(intermedia,tablemodel2,tableResultQuery2);
-        printAllColumns(temporal,tablemodel,tableResultQuery);
+        printAllColumns(temporal,tablemodel3,tableResultQuery3);
+        this.labelFinal.setText("PROYECCION");
+        }else if(band==1){
+            printAllColumns(producto,tablemodel2,tableResultQuery2);
+            printAllColumns(Filtrada,tablemodel3,tableResultQuery3);
+            this.labelFinal.setText("EQUIJOIN");
+        }
         
     }
     
     public void clean(){
-        this.tableResultQuery.setModel(tablemodel = new javax.swing.table.DefaultTableModel(
-                                                                    new Object [][] {},new String [] {}));
         this.tableResultQuery1.setModel(tablemodel1 = new javax.swing.table.DefaultTableModel(
                                                                     new Object [][] {},new String [] {}));
         this.tableResultQuery2.setModel(tablemodel2 = new javax.swing.table.DefaultTableModel(
                                                                     new Object [][] {},new String [] {}));
+        
+        this.tableResultQuery3.setModel(tablemodel3 = new javax.swing.table.DefaultTableModel(
+                                                                    new Object [][] {},new String [] {}));
+        this.tableResultQuery4.setModel(tablemodel4 = new javax.swing.table.DefaultTableModel(
+                                                                    new Object [][] {},new String [] {}));
+        this.tableResultQuery5.setModel(tablemodel5 = new javax.swing.table.DefaultTableModel(
+                                                                    new Object [][] {},new String [] {}));
+        
+       
     }
     
     
@@ -453,9 +736,14 @@ public class GestorGUI extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static DefaultTableModel tablemodel;
     public static DefaultTableModel tablemodel1;
     public static DefaultTableModel tablemodel2;
+    public static DefaultTableModel tablemodel3;
+    public static DefaultTableModel tablemodel4;
+    public static DefaultTableModel tablemodel5;
+    public static DefaultTableModel tablemodel6;
+    
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -484,14 +772,17 @@ public class GestorGUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GestorGUI().setVisible(true);
-                GestorGUI.tableResultQuery.setModel(tablemodel = new javax.swing.table.DefaultTableModel(
-                                                                    new Object [][] {},new String [] {}));
-                
                 GestorGUI.tableResultQuery1.setModel(tablemodel1 = new javax.swing.table.DefaultTableModel(
                                                                     new Object [][] {},new String [] {}));
-                
                 GestorGUI.tableResultQuery2.setModel(tablemodel2 = new javax.swing.table.DefaultTableModel(
                                                                     new Object [][] {},new String [] {}));
+                GestorGUI.tableResultQuery3.setModel(tablemodel3 = new javax.swing.table.DefaultTableModel(
+                                                                    new Object [][] {},new String [] {}));
+                GestorGUI.tableResultQuery4.setModel(tablemodel4 = new javax.swing.table.DefaultTableModel(
+                                                                    new Object [][] {},new String [] {}));
+                GestorGUI.tableResultQuery5.setModel(tablemodel5 = new javax.swing.table.DefaultTableModel(
+                                                                    new Object [][] {},new String [] {}));
+                
             }
         });
     }
@@ -508,12 +799,23 @@ public class GestorGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JLabel labelFiltrado;
+    private javax.swing.JLabel labelFiltrado2;
+    private javax.swing.JLabel labelFinal;
     private javax.swing.JLabel labelQuery;
     private javax.swing.JLabel labelResult;
-    public static javax.swing.JTable tableResultQuery;
+    private javax.swing.JLabel labelTabla1;
+    private javax.swing.JLabel labelTabla2;
     public static javax.swing.JTable tableResultQuery1;
     public static javax.swing.JTable tableResultQuery2;
+    public static javax.swing.JTable tableResultQuery3;
+    public static javax.swing.JTable tableResultQuery4;
+    public static javax.swing.JTable tableResultQuery5;
+    private javax.swing.JScrollPane tableScroll;
+    private javax.swing.JPanel tablesPanel;
     private javax.swing.JTextArea textAreaQuery;
     // End of variables declaration//GEN-END:variables
 }

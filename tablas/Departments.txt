@@ -1,4 +1,4 @@
-departments,department_id,1,4,department_name,5,35,manager_id,36,42,location_id,43,47
+Departments,department_id,1,4,department_name,5,35,manager_id,36,42,location_id,43,47
 10  Administration                 200    1700 
 20  Marketing                      201    1800 
 30  Purchasing                     114    1700 

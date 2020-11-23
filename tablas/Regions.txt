@@ -1,4 +1,4 @@
-regions,region_id,1,1,region_name,2,26
+Regions,region_id,1,1,region_name,2,26
 1                   Europe
 2                 Americas
 3                     Asia

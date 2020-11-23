@@ -21,5 +21,9 @@ class Columna {
         this.tamano = tamano;
     }
     
+    public Columna(String nombre){
+        this.nombre=nombre;
+    }
+    
     
 }
