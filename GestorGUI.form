@@ -100,7 +100,7 @@
               <Group type="102" attributes="0">
                   <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
                   <Component id="labelQuery" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
@@ -143,6 +143,9 @@
                 </Property>
                 <Property name="rows" type="int" value="5"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

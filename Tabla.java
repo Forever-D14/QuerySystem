@@ -1,16 +1,5 @@
-
 import java.util.*;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author nacho
- */
 public class Tabla {
     public String nombre;
     public String descriptor[];
@@ -23,7 +12,7 @@ public class Tabla {
             this.columnas.add(new Columna(d[i],(Integer.parseInt(d[i+2])-Integer.parseInt(d[i+1]))+1));
         }
     }
-    
+   
     public Tabla(String nombre) {
         this.nombre = nombre;
     }
@@ -34,10 +23,8 @@ public class Tabla {
         int j;
         for(int i=0;i<this.columnas.size();i++){
             instancia = "";
-            for(j = 0;j<this.columnas.get(i).tamano;j++){
+            for(j = 0;j<this.columnas.get(i).tamano;j++)
                 instancia+=Character.toString(x[j+posicion]);
-                
-            }
             instancia = instancia.trim();
             posicion+=j;
             this.columnas.get(i).instancias.add(instancia);

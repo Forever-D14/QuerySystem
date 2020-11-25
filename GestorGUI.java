@@ -744,7 +744,7 @@ public class GestorGUI extends javax.swing.JFrame {
     public static DefaultTableModel tablemodel6;
     
     
-    public static void main(String args[]) {
+    public static void corre(String QUERY) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -782,14 +782,15 @@ public class GestorGUI extends javax.swing.JFrame {
                                                                     new Object [][] {},new String [] {}));
                 GestorGUI.tableResultQuery5.setModel(tablemodel5 = new javax.swing.table.DefaultTableModel(
                                                                     new Object [][] {},new String [] {}));
-                
+                GestorGUI.getTextAreaQuery().setText(QUERY);
             }
         });
     }
 
-    public JTextArea getTextAreaQuery() {
+    public static JTextArea getTextAreaQuery() {
         return textAreaQuery;
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonClean;
@@ -816,6 +817,6 @@ public class GestorGUI extends javax.swing.JFrame {
     public static javax.swing.JTable tableResultQuery5;
     private javax.swing.JScrollPane tableScroll;
     private javax.swing.JPanel tablesPanel;
-    private javax.swing.JTextArea textAreaQuery;
+    private static javax.swing.JTextArea textAreaQuery;
     // End of variables declaration//GEN-END:variables
 }
